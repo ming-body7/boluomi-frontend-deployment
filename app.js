@@ -3,7 +3,7 @@
 
     angular
         .module('myApp', ['ngFileUpload', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'uiSwitch',
-            'ngCookies', 'as.sortable', 'baiduMap', 'monospaced.qrcode', 'permission','angularLoad'])
+            'ngCookies', 'as.sortable', 'baiduMap', 'monospaced.qrcode', 'permission'])
         .config(config)
         .run(run);
 

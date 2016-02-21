@@ -57,7 +57,6 @@ var $obj = {
 	forget_link : $('#forget_link'),
 	forget_zone : $('#forget_zone'),
 	forget_close_btn : $('#forget_zone .J_close_btn'),
-	forget_code_btn : $('.get-code'),
 	finish_btn : $('#finish_btn'),
 	free_btn : $('#free_btn'),
 	link_box : $('#link-box'),
@@ -78,8 +77,6 @@ var myEvent = {
 
 		//忘记密码
 		$obj.forget_link.on('click',handler.forget_link_click);
-
-		$obj.forget_code_btn.on('click', handler.forget_code_click);
 
 		//忘记密码弹窗确定按钮
 		$obj.finish_btn.on('click',handler.finish_btn_click);
@@ -149,20 +146,8 @@ var handler = {
 			return false;
 		}
 
-		if(!isValid(password)){
-			alert("请输入6-20位字母或者数字的密码");
-			return false;
-		}
-		function isValid(pw) {
-
-			if (/(?=.*\d.*)(?=.*[a-zA-Z].*)(?=.*[!#\$%&\?].*).{8,20}/.test(pw)) {
-				return false;
-			}
-			return true;
-		}
-		angular.element('#forget_zone').scope().resetPassword();
 		//校验通过 请求接口
-		/*server.forget_login(phone,code,password,confirmpassword,function(data){
+		server.forget_login(phone,code,password,confirmpassword,function(data){
 			console.log(data)
 			if(data.type == 2){//修改成功
 
@@ -175,7 +160,7 @@ var handler = {
 
 				alert(msg)
 			}
-		});*/
+		});
 
 	},
 	forget_link_click : function(){
@@ -184,29 +169,6 @@ var handler = {
 
 		//弹出忘记密码弹窗
 		$obj.forget_zone.fadeIn();
-	},
-	forget_code_click : function(){
-		var _this = $(this);
-		var ipts = _this.siblings('.ipt-zone').find('.ipt');
-
-		//获取数据
-		var phone = ipts.eq(0).val();
-		var code = ipts.eq(1).val();
-		var password = ipts.eq(2).val();
-		var confirmpassword = ipts.eq(3).val();
-
-		//校验手机号
-		if(G.isEmpty( phone ) ){
-			alert('手机号不能为空');
-			return false;
-		}
-		if(!G.isMobile(phone)){
-			alert('手机号有误');
-			return false;
-		}
-
-		angular.element('#forget_zone').scope().getPasscode();
-
 	},
 	login_btn_click : function(){
 		var _this = $(this);
