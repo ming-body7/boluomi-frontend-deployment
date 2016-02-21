@@ -1,0 +1,119 @@
+<div class="curmb">
+    <a ui-sref="admin.products">作品管理</a> &gt; <a href="">{{guideTitle}}</a>
+</div>
+
+<div class="share_wrap">
+    <div>状态：{{statusList[product.id]}}</div>
+    <div class="page_face">
+        <div class="img_box">
+            <img class="banner_pic"  ng-src="{{product.banner_pic}}" alt="封面图片"/>
+            <p type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+               accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                更改封面</p>
+
+        </div>
+        <input type="text" placeholder="快给作品起个名字吧"  ng-model = "product.title"/>
+        <textarea placeholder="加点摘要说明，发送到朋友圈，点开的可能性更大哟~" ng-model = "product.description"/>
+    </div>
+    <ul class="choice_type">
+        <li><span>页尾品牌：</span>
+            <input ng-model="product.is_brand" class="chec" type="checkbox" name="" id="" checked="checked">
+            <strong>作品最后一页展示商家品牌广告</strong>
+        </li>
+        <li>
+            <span>背景音乐：</span>
+            {{musicName}}
+            <button class="base_btn" type="file"
+                    ngf-validate-fn="validate($file)" ngf-select="uploadMusic($file)" ngf-max-size="4MB">
+                {{musicButton}}</button>
+            <em class="tips">（只能上传MP3格式的，不超过4M ）</em>
+        </li>
+
+        <li>
+            <span>页面切换：</span>
+
+            <select ng-model="product.change_status">
+                <option ng-selected="product.change_status == 0" value =0>上下切换</option>
+                <option ng-selected="product.change_status == 1" value =1>折叠切换</option>
+                <option ng-selected="product.change_status == 2" value =2>立体切换</option>
+            </select>
+
+        </li>
+    </ul>
+    <p class="tips">上传照片（960*1008，jpg、png、gif格式，大小不超过3M）：</p>
+
+    <div class="i_btn face_btn" ngf-drop ngf-select ng-model="files"
+         ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+         accept="image/*,application/pdf"
+         ngf-pattern="'image/*,application/pdf'">本地上传</div>
+    <div class="upload_zone">
+        <ul class="sortable-row" as-sortable="sortableOptions" ng-model="product.pics" >
+            <div ng-show="product.pics.length == 0">请上传图片</div>
+            <li ng-repeat="item in product.pics" as-sortable-item>
+                <div as-sortable-item-handle ngf-as-background="true">
+                    <img ng-src="{{item}}" alt="{{percent}}" width="150" height="236">
+                    <p ng-click="product.pics.splice($index,1); $event.stopPropagation()"></p>
+                </div>
+                <div class="pro"></div>
+            </li>
+        </ul>
+    </div>
+
+
+    <button class="i_btn save_btn" ng-click="saveChanges()">保存</button>
+    <a class="i_btn pre_view" ui-sref="preview">预览</a>
+    <button class="i_btn save_btn" ng-click="">删除</button>  <!--TODO:添加删除功能 -->
+</div>
+
+
+<style>
+
+    .banner_pic {
+        max-width: 100%;
+        max-height: 100%;
+        margin:auto;
+        display:block;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+    #coverContainer {
+        display:inline-block;
+        position:relative;
+    }
+    #coverChangeBtn {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        background: rgba(255,255,255,0.6);
+    }
+    /* Put your css in here */
+
+    .as-sortable-item,
+    .as-sortable-placeholder {
+        display: inline-block;
+        width: 200px;
+        height: 300px;
+        float: left;
+    }
+
+    /*.sortable-row:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }*/
+
+    #sortable-container {
+        display: inline-block;
+
+    }
+
+    .infoL{
+        box-sizing: content-box;
+    }
+    textarea {
+        resize: none;
+    }
+</style>

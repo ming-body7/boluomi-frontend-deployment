@@ -1,0 +1,179 @@
+
+<link rel="stylesheet" href="css/finishbrandinfo.css" />
+
+
+<div class="banner"></div>
+<ul id="brandForm" class="main">
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>商家名称：</span>
+        </div>
+        <div class="infoR">
+            <input ng-model="merchant.name" id="brand_name" class="ipt" type="text">
+            <div class="error" data-empty="请填写商家名">格式不对</div>
+        </div>
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>联系方式：</span>
+        </div>
+        <div class="infoR">
+            <input ng-model="merchant.phone" id="contact_phone" class="ipt" type="text" maxlength="11">
+            <div class="error" data-empty="请填写联系方式" data-error="手机格式有误" >格式不对</div>
+        </div>
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>商家LOGO：</span>
+        </div>
+
+        <div class="infoR">
+            <!-- <a ng-click="uploadOption = 'logo'" id="brand_logo" href="javascript:;" data-logo-src="{{merchant.logo}}">{{logoButton}}</a> -->
+            <button id="brand_logo" ng-click="uploadOption = 'logo'" data-logo-src="{{merchant.logo}}"
+                    class="upload_btn" type="file" ngf-select="uploadSingleFile($file)"
+                    accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                {{logoButton}}</button>
+        </div>
+        <div>
+            <img ng-if="merchant.logo!=null && merchant.logo!= ''" ng-src="{{merchant.logo}}" alt="">
+        </div>
+
+
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>商家类型：</span>
+        </div>
+        <div id="brand_type" class="infoR" data-type="">
+            <label for="type1"><input ng-model="merchant.type" id="type1" data-type="1" name="type" type="radio">影楼</label>
+            <label for="type2"><input ng-model="merchant.type" id="type2" data-type="2" name="type" type="radio">工作室</label>
+        </div>
+    </li>
+
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>商家地址：</span>
+        </div>
+        <div class="infoR">
+            <select required=""  ng-model="merchant.province" ng-options="key as key for (key,value) in division"
+                    ng-change="merchant.city='';merchant.area='';">
+                <option value="">省</option>
+            </select>
+
+            <select  ng-model="merchant.city" ng-options="key as key for (key,value) in division[merchant.province]"
+                     ng-change="merchant.area='';">
+                <option value="">市</option>
+            </select>
+            <select  ng-model="merchant.area" ng-options="value as value for value in division[merchant.province][merchant.city]">
+                <option value="">区</option>
+            </select>
+        </div>
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>详细地址：</span>
+        </div>
+        <div class="infoR">
+            <input ng-model="merchant.address" id="detail_address" class="ipt" type="text" name="" id="" data-empty="请填写详细地址">
+            <div class="error">格式不对</div>
+        </div>
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>地图标注：</span>
+        </div>
+        <div class="infoR">
+            <a id="map_mark" href="javacript:;"  data-position="">标注</a>
+        </div>
+
+    </li>
+
+    <!--<li>
+        <div>
+            <div ng-show="merchant.location!=null && merchant.location!='' " id="smallMap" class="smallMap"></div>
+        </div>
+    </li> -->
+    <li class="row">
+        <div ng-show="merchant.location!=null && merchant.location!=''" class="col-md-offset-2 map_preview">
+            <baidu-map  options="smallMap"></baidu-map>
+        </div>
+    </li>
+    <li>
+        <div class="infoL">
+            <i>*</i>
+            <span>营业执照：</span>
+        </div>
+        <div class="infoR">
+            <!-- <a ng-click="uploadOption = 'licence'" id="licence_pic" href="javacript:;" data-licence-src="{{merchant.licence}}">{{licenceButton}}</a> -->
+            <button id="licence_pic" ng-click="uploadOption = 'licence'" data-logo-src="{{merchant.licence}}"
+                    class="upload_btn" type="file" ngf-select="uploadSingleFile($file)"
+                    accept="image/*" ngf-max-height="2000" ngf-max-size="10MB">
+                {{licenceButton}}</button>
+        </div>
+        <div>
+            <img ng-if="merchant.licence!=null && merchant.licence!= ''" ng-src="{{merchant.licence}}" alt="">
+        </div>
+
+
+    </li>
+</ul>
+
+
+<a id="submit_audit" class="submit-btn" href="javascript:;">提交审核</a>
+
+
+<div class="footer">
+    <a class="contact-we" href="#">联系我们：fankui@boluomi1314.com</a>
+    <p class="copyRight">Copyright © 2014—2015 boluomi1314.com  京ICP备14053981号-1</p>
+</div>
+
+<div id="load_img_wrap" class="load_img_wrap">
+    <div class="btn_wrap">
+        <!--<input id="load_btn" class="upload_btn" type="button" value="上传"> -->
+
+        <button class="upload_btn" type="file" ngf-select="uploadSingleFile($file)"
+                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+            上传</button>
+
+        <input id="cancle_btn" class="upload_btn" type="button" value="关闭" >
+        <input id="hidden_btn" type="button" value="">
+    </div>
+    <div class="img_box">
+        <img ng-if="uploadOption == 'logo'" ng-src="{{merchant.logo}}" alt="">
+        <img ng-if="uploadOption == 'licence'" ng-src="{{merchant.licence}}" alt="">
+    </div>
+    <div class="pro_wrap">
+        <div id="progress" class="progress"></div>
+    </div>
+
+</div>
+<div id="mask" class="mask"></div>
+
+<style>
+    .infoL{
+        box-sizing: content-box;
+    }
+
+    .map_preview{
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+
+<script src="js/linkageCity.js"></script>
+<script src="js/myEvent.js"></script>
+<script src="js/finishbrandinfo.js"></script>
+<!--<script src="http://api.map.baidu.com/api?v=1.5&ak=5U8M51SeGixHSOHsMzKLt1NG" type="text/javascript"></script> -->
+<!--<script src="js/linkageCity.js"></script>
+<script src="js/myEvent.js"></script>
+ <script src="js/finishbrandinfo.js"></script> -->
+<!-- <script src="js/script.js"></script> -->
+
