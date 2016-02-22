@@ -50,6 +50,7 @@
 <script src="bower_components/qrcode-generator/js/qrcode_UTF8.js"></script>
 <script src="bower_components/angular-qrcode/angular-qrcode.js"></script>
 <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+<script src="bower_components/angular-load/angular-load.js"></script>
 
 
 <link rel="stylesheet" type="text/css" href="bower_components/ng-sortable/dist/ng-sortable.min.css">
@@ -57,6 +58,8 @@
 
 <script src="config.js"></script>
 <script src="app.js"></script>
+<script src="controllers/app/content.js"></script>
+<script src="controllers/admin/admin.js"></script>
 <script src="controllers/app/app.controller.js"></script>
 
 
@@ -102,7 +105,7 @@
 
 
 <div ng-controller="appController">
-    <div ui-view='main'></div>
+    <div ui-view></div>
 </div>
 
 

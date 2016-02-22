@@ -1,0 +1,119 @@
+/**
+ * Created by body7 on 16/2/21.
+ */
+(function(){
+    'use strict';
+    angular.module('myApp.admin', ['ui.router'])
+        .config(config)
+        .run(run);
+
+    config.$inject = ["$stateProvider", "$urlRouterProvider"];
+
+    function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.rule(function ($injector, $location) {
+
+            var path = $location.path();
+            var hasTrailingSlash = path[path.length - 1] === '/';
+
+            if (hasTrailingSlash) {
+                //if last charcter is a slash, return the same url without the slash
+                var newPath = path.substr(0, path.length - 1);
+                return newPath;
+            }
+
+        });
+
+
+        $urlRouterProvider.otherwise(function ($injector) {
+            var $state = $injector.get("$state");
+            $state.go('index');
+        });
+
+        $stateProvider
+            .state('admin.merchants', {
+                url: "/merchants",
+                views: {
+                    'main': {
+                        templateUrl: "controllers/main/main.view.html",
+                        controller: "mainController"
+                    },
+                    'content@admin': {
+                        templateUrl: "controllers/admin/merchants/merchants.view.html",
+                        controller: "merchantsController"
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'admin_login'
+                    }
+                }
+
+            })
+            .state('admin.merchant', {
+                url: "/merchant/{merchant_id}",
+                views: {
+                    'main': {
+                        templateUrl: "controllers/main/main.view.html",
+                        controller: "mainController"
+                    },
+                    'content@admin': {
+                        templateUrl: "controllers/admin/merchant/merchant.view.html",
+                        controller: "merchantController"
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'admin_login'
+                    }
+                }
+
+            })
+            .state('admin.products', {
+                url: "/products",
+                views: {
+                    'main': {
+                        templateUrl: "controllers/main/main.view.html",
+                        controller: "mainController"
+                    },
+                    'content@admin': {
+                        templateUrl: "controllers/admin/products/products.view.html",
+                        controller: "productsController"
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'admin_login'
+                    }
+                }
+
+            })
+            .state('admin.product', {
+                url: "/product/{product_id}",
+                views: {
+                    'main': {
+                        templateUrl: "controllers/main/main.view.html",
+                        controller: "mainController"
+                    },
+                    'content@admin': {
+                        templateUrl: "controllers/admin/product/product.view.html",
+                        controller: "productController"
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['admin'],
+                        redirectTo: 'admin_login'
+                    }
+                }
+
+            });
+    }
+
+    run.$inject = [];
+
+    function run() {
+    }
+})();

@@ -1,0 +1,110 @@
+/**
+ * Created by body7 on 16/2/21.
+ */
+(function(){
+    'use strict';
+    angular.module('myApp.content', ['ui.router'])
+        .config(config)
+        .run(run);
+
+    config.$inject = ["$stateProvider", "$urlRouterProvider"];
+
+    function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.rule(function ($injector, $location) {
+
+            var path = $location.path();
+            var hasTrailingSlash = path[path.length - 1] === '/';
+
+            if (hasTrailingSlash) {
+                //if last charcter is a slash, return the same url without the slash
+                var newPath = path.substr(0, path.length - 1);
+                return newPath;
+            }
+
+        });
+
+
+        $urlRouterProvider.otherwise(function ($injector) {
+            var $state = $injector.get("$state");
+            $state.go('index');
+        });
+
+        $stateProvider
+            .state('main.content', {
+                url: "",
+                templateUrl: "controllers/content/content.view.html",
+                controller: "contentController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+            })
+            .state('main.create', {
+                url: "/create",
+                templateUrl: "controllers/create_modified/create_modified.view.html",
+                controller: "modifiedController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+
+            })
+            .state('main.modified', {
+                url: "/modified/{pid}",
+                templateUrl: "controllers/create_modified/create_modified.view.html",
+                controller: "modifiedController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+
+            })
+            .state('main.information', {
+                url: "/information",
+                templateUrl: "controllers/forms/information.view.html",
+                controller: "informationController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+
+            })
+            .state('main.password', {
+                url: "/updatepassword",
+                templateUrl: "controllers/update_password/updatepassword.view.html",
+                controller: "updatePasswordController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+
+            })
+            .state('main.account', {
+                url: "/account",
+                templateUrl: "controllers/reset_account/resetaccount.view.html",
+                controller: "resetAccountController",
+                data: {
+                    permissions: {
+                        only: ['user'],
+                        redirectTo: 'index'
+                    }
+                }
+
+            });
+    }
+
+    run.$inject = [];
+
+    function run() {
+    }
+})();
