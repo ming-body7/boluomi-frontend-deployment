@@ -5,44 +5,41 @@
         .module('myApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['AuthenticationService','$scope','$rootScope', '$state','DataService','UserService','$cookies'];
-    function indexController(AuthenticationService,$scope, $rootScope, $state, DataService,UserService,$cookies) {
+    indexController.$inject = ['UtilsService','AuthenticationService','$scope','$rootScope', '$state','DataService','UserService','$cookies','$timeout'];
+    function indexController(UtilsService, AuthenticationService,$scope, $rootScope, $state, DataService,UserService,$cookies, $timeout) {
 
         $scope.default = {
           passcodeText:"获取验证码"
         };
+        $scope.loginForgetZoneVisible =false;
+
 
         $scope.login = login;
+        $scope.checkLoginStatus = checkLoginStatus;
+        $scope.closeLoginAndForgetZone = closeLoginAndForgetZone;
+        $scope.openLoginAndForgetZone = openLoginAndForgetZone;
         $scope.checkLoginStatus = checkLoginStatus;
         $scope.redirectToMain = redirectToMain;
         $scope.resetPassword = resetPassword;
         $scope.getPasscode = getPasscode;
 
         (function initController() {
-            //AuthenticationService.ClearCredentials();
             AuthenticationService.GetCredentials();
-            //initLastState();
-
         })();
-
+        function openLoginAndForgetZone(){
+            $scope.loginForgetZoneVisible = true;
+            $scope.loginFormVisible = true;
+        }
+        function closeLoginAndForgetZone(){
+            $scope.loginForgetZoneVisible = false;
+        }
         function checkLoginStatus(){
             if($rootScope.globals!=null&& $rootScope.globals.role == 'user'){
-                return true;
+                redirectToMain();
             }else{
-                return false;
-            }
-
-        }
-
-        function initLastState(){
-            var currentStateString = JSON.parse($cookies.get('currentState')||{});
-            var currentState = JSON.parse(currentStateString||{});
-            if(currentState && currentState.toStateName!="index"){
-                //$state.go(currentState.toStateName, currentState.toParams);
-                $state.go("main.content", currentState.toParams);
+                openLoginAndForgetZone();
             }
         }
-
         function redirectToMain(){
             UserService.setAccessLevel('user');
             $state.go('main.content.content');
@@ -88,10 +85,7 @@
 
 
                     } else {
-                        //TODO:确认后端功能实现
-                        //如果用户名不存在，提示账户不存在，请先注册
-                        //如果用户名存在，密码不对，提示密码错误
-                        if(response.type == 1){
+                        if(response.data.account != null){
                             alert("用户名不存在，请先注册");
                         }else{
                             alert("用户名或密码错误");
@@ -99,17 +93,20 @@
                     }
                 });
             }
-
-
-        };
-
+        }
         function getPasscode(){
             //TODO:调用获取passcode的接口,倒计时
+            if(!getPasscodeCheck($scope.account)){
+                return;
+            }
             countDownClock();
             alert("已为您发送语音验证码，请注意接听电话，谢谢!");
         }
         function resetPassword() {
             $scope.dataLoading = true;
+            if(!resetPasswordCheck($scope.account, $scope.code, $scope.password, $scope.rePassword)){
+                return;
+            }
             AuthenticationService.ResetPassword($scope.account, $scope.code, $scope.password, $scope.rePassword, function (response) {
                 if (response.success) {
                     //AuthenticationService.SetCredentials($scope.username, $scope.password);
@@ -119,20 +116,19 @@
                 }
             });
         }
-
         function countDownClock(){
-            $scope.counter = 60;
+            $scope.counter = 120;
             $scope.countDown = function(){
                 $scope.counter--;
                 if($scope.counter >= 0){
                     $timeout($scope.countDown,1000);
-                    $scope.default.passcodeText = counter;
+                    $scope.default.passcodeText = $scope.counter;
                 }else{
                     alert("请重新获取验证码！");
                     $scope.default.passcodeText = "获取验证码";
                 }
             }
-            $timeout(countDown, 1000);
+            $timeout($scope.countDown, 1000);
 
         }
     }
