@@ -241,34 +241,32 @@ angular.module('myApp')
             });
 
 
-            $scope.upload = function (files) {
-                if (files && files.length) {
-                    for (var i = 0; i < files.length; i++) {
-                        var file = files[i];
-                        if (!file.$error) {
-                            var new_pic = {};
-                            $scope.product.pics.push(new_pic);
-                            Upload.upload({
-                                url: uploadAPI,
-                                data: {
-                                    username: $scope.username,
-                                    file: file
-                                }
-                            }).progress(function (evt) {
-                                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                                $scope.log = 'progress: ' + progressPercentage + '% ' +
-                                    evt.config.data.file.name + '\n' + $scope.log;
-                                $scope.percent = progressPercentage + "%";
-                            }).success(function (data, status, headers, config) {
-                                $timeout(function() {
-                                    $scope.log = 'file: ' + config.data.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
+            $scope.upload = function (file, errFiles) {
+                $scope.f = file;
+                $scope.errFile = errFiles && errFiles[0];
+                if (file) {
+                    var new_pic = {};
+                    $scope.product.pics.push(new_pic);
 
-                                    //$scope.product.pics.push(uploadFolder+data.url);
-                                    $scope.product.pics[$scope.product.pics.length - 1] = uploadFolder+data.url;
-                                });
-                            });
+                    file.upload = Upload.upload({
+                        url: uploadAPI,
+                        data: {
+                            username: $scope.username,
+                            file: file
                         }
-                    }
+                    });
+
+                    file.upload.progress(function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        $scope.log = 'progress: ' + progressPercentage + '% ' +
+                            evt.config.data.file.name + '\n' + $scope.log;
+                        $scope.percent = progressPercentage + "%";
+                    }).success(function (data, status, headers, config) {
+                        $timeout(function() {
+                            $scope.log = 'file: ' + config.data.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
+                            $scope.product.pics[$scope.product.pics.length - 1] = uploadFolder+data.url;
+                        });
+                    });
                 }
             };
         }]);

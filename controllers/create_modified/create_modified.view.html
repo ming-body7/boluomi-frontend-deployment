@@ -31,22 +31,14 @@
 
 		<li>
 			<span>页面切换：</span>
-			<!--<select ng-model="product.change_status">
-				<option ng-selected="product.change_status == item" ng-repeat="item in options" ng-value="item.value">{{item.name}}</option>
-			</select>  -->
 			<select ng-model="product.change_status">
 				<option ng-selected="product.change_status == 0" value =0>上下切换</option>
 				<option ng-selected="product.change_status == 1" value =1>折叠切换</option>
 				<option ng-selected="product.change_status == 2" value =2>立体切换</option>
 			</select>
-			<!--
-			<select ng-init="product.change_status = options[0]" ng-model="product.change_status"
-					ng-options="option.name for option in options"></select>  -->
 		</li>
 	</ul>
 	<p class="tips">上传照片（960*1008，jpg、png、gif格式，大小不超过3M）：</p>
-	<!-- <a class="i_btn face_btn" >本地上传</a> -->
-
 	<div class="upload_zone">
 		<ul class="sortable-row" as-sortable="sortableOptions" ng-model="product.pics" >
 
@@ -58,10 +50,8 @@
 				<div class="pro"></div>
 			</li>
 			<li>
-				<div ngf-drop ngf-select="upload($file)" ng-model="files"
-					 ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-					 accept="image/*,application/pdf"
-					 ngf-pattern="'image/*,application/pdf'">
+				<div ngf-select="upload($file, $invalidFiles)"
+					 accept="image/*,application/pdf"  ngf-pattern="'image/*,application/pdf'">
 					<a ng-if="product.pics.length == 0">请上传图片</a>
 					<a ng-if="product.pics.length != 0">添加图片</a>
 				</div>
