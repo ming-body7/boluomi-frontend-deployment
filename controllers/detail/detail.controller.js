@@ -36,7 +36,7 @@ angular.module('myApp')
             $scope.banner_progress = 0;
             $scope.music_progress = 0;
             $scope.music_uploading = false;
-
+            $scope.uploading = false;
 
             $scope.options = [{
                 name: '上下切换',
@@ -288,11 +288,13 @@ angular.module('myApp')
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                         $scope.log = 'progress: ' + progressPercentage + '% ' +
                             evt.config.data.file.name + '\n' + $scope.log;
-                        $scope.percent = progressPercentage + "%";
+                        $scope.percent = progressPercentage;
+                        $scope.uploading = true;
                     }).success(function (data, status, headers, config) {
                         $timeout(function() {
                             $scope.log = 'file: ' + config.data.file.name + ', Response: ' + JSON.stringify(data) + '\n' + $scope.log;
                             $scope.product.pics[$scope.product.pics.length - 1] = uploadFolder+data.url;
+                            $scope.uploading = false;
                         });
                     });
                 }
