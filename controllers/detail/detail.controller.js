@@ -34,8 +34,8 @@ angular.module('myApp')
             };
 
             $scope.banner_progress = 0;
-            $scope.music_prgress = 0;
-
+            $scope.music_progress = 0;
+            $scope.music_uploading = false;
 
 
             $scope.options = [{
@@ -51,6 +51,7 @@ angular.module('myApp')
 
             $scope.saveChanges = saveChanges;
             $scope.saveChangesAndExit = saveChangesAndExit;
+            $scope.preview = preview;
 
             $scope.musicName = "";
             initProduct();
@@ -108,6 +109,8 @@ angular.module('myApp')
 
             $scope.uploadMusic = function(music) {
                 //$scope.product.music = music.name;
+                $scope.music_progress = 0;
+                $scope.music_uploading = false;
                 if (music) {
                     music.upload = Upload.upload({
                         url: uploadAPI,
@@ -118,21 +121,27 @@ angular.module('myApp')
                         $timeout(function () {
                             //file.result = response.data;
                             if(response.data.error == 1){
+                                $scope.music_progress = 0;
+                                $scope.music_uploading = false;
                                 alert("上传失败，"+response.data.message);
                             }else{
                                 $scope.product.music = uploadFolder+response.data.url;
                                 $scope.musicButton = "更改";
                                 $scope.musicName = music.name;
-                                alert("上传成功");
+                                $scope.music_progress = 100;
+                                $scope.music_uploading = false;
+                                //alert("上传成功");
                             }
 
                         });
                     }, function (response) {
-                        //$scope.product.banner_pic = baseUrl+response.data.url;
+                        $scope.music_progress = 0;
+                        $scope.music_uploading = false;
                     }, function (evt) {
                         music.progress = Math.min(100, parseInt(100.0 *
                             evt.loaded / evt.total));
                         $scope.music_prgress = music.progress;
+                        $scope.music_uploading = true;
                     });
                 }
             }
@@ -164,11 +173,11 @@ angular.module('myApp')
                             $scope.product.banner_pic = uploadFolder+response.data.url;
                         });
                     }, function (response) {
-                        $scope.banner_process = 100;
+                        $scope.banner_progress = 1;
                     }, function (evt) {
                         file.progress = Math.min(100, parseInt(100.0 *
                             evt.loaded / evt.total));
-                        $scope.banner_process = file.progress/100;
+                        $scope.banner_progress = file.progress/100;
                     });
                 }
             }
@@ -231,6 +240,25 @@ angular.module('myApp')
                 }
             }
 
+            function preview(){
+                if($scope.product.is_brand == true){
+                    $scope.product.is_brand = 1;
+                }else{
+                    $scope.product.is_brand = 0;
+                }
+
+                DataService.AddProduct($rootScope.globals.authKey, $scope.product, function(response){
+                    if(response.success){
+                        //
+                        pid = response.data.id;
+                        //alert("生成成功！");
+                        $rootScope.previewPid = pid;
+                        $state.go('preview',{pid:pid});
+                    }else{
+                        alert("生成失败");
+                    }
+                });
+            }
             $scope.$watch('files', function () {
                 $scope.upload($scope.files);
             });

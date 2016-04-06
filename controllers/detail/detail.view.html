@@ -7,7 +7,7 @@
 		<div class="img_box">
 			<img class="banner_pic"  ng-src="{{product.banner_pic}}" alt="封面图片"/>
 			<p type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="10000" ngf-max-size="100MB">
-			<a id="banner_progress_button" progress-button value="banner_progress" in-progress="上传中。。。" complete="666">更改封面</a>
+			<a id="banner_progress_button" progress-button value="banner_progress" in-progress="上传中。。。" complete="更改封面">更改封面</a>
 			</p>
 		</div>
 		<input type="text" placeholder="快给作品起个名字吧"  ng-model = "product.title"/>
@@ -19,14 +19,16 @@
 			<strong>作品最后一页展示商家品牌广告</strong>
 		</li>
 		<li>
-			<span>背景音乐：</span>
-			{{musicName}}
+			<span>背景音乐：{{musicName}}</span>
 			<p class="base_btn" type="file"
-					ngf-validate-fn="validate($file)" ngf-select="uploadMusic($file)" ngf-max-size="4MB">
+					ngf-validate-fn="validate($file)" ngf-select="uploadMusic($file)" ngf-max-size="14MB">
 
 				<a progress-button value="music_progress" in-progress="上传中。。。" complete="重新上传">上传</a>
 			</p>
 			<em class="tips">（只能上传MP3格式的，不超过4M ）</em>
+			<div ng-show="music_uploading">
+				<progressbar animate="true" value="music_progress" type="success"><b>{{music_progress}}%</b></progressbar>
+			</div>
 		</li>
 
 		<li>
@@ -47,7 +49,9 @@
 					<img ng-src="{{item}}" alt="{{percent}}" width="150" height="236">
 					<p ng-click="product.pics.splice($index,1); $event.stopPropagation()"></p>
 				</div>
-				<div class="pro"></div>
+				<div class="pro">
+					<progressbar ng-if="$last" animate="true" value="percent" type="success"><b>{{percent}}%</b></progressbar>
+				</div>
 			</li>
 			<li>
 				<div ngf-select="upload($file, $invalidFiles)"
@@ -60,7 +64,8 @@
 	</div>
 
 
-	<button class="i_btn save_btn b_state_e" ng-click="saveChanges()">保存</button><a class="i_btn pre_view b_state_f" ui-sref="preview({pid:pid})">预览</a>
+	<button class="i_btn save_btn b_state_e" ng-click="saveChanges()">保存</button>
+	<a class="i_btn pre_view b_state_f" ng-click="preview()">预览</a>
 	<button class="i_btn save_btn b_state_e" ng-click="saveChangesAndExit()">保存并退出</button>
 </div>
 <style>
