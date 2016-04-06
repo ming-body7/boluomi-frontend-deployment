@@ -50,7 +50,7 @@
 					<p ng-click="product.pics.splice($index,1); $event.stopPropagation()"></p>
 				</div>
 				<div class="pro">
-					<progressbar ng-if="$last&&" animate="true" value="percent" type="success"><b>{{percent}}%</b></progressbar>
+					<progressbar ng-if="$last&&uploading" animate="true" value="percent" type="success"><b>{{percent}}%</b></progressbar>
 				</div>
 			</li>
 			<li>
