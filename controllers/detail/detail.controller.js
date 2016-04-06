@@ -140,7 +140,7 @@ angular.module('myApp')
                     }, function (evt) {
                         music.progress = Math.min(100, parseInt(100.0 *
                             evt.loaded / evt.total));
-                        $scope.music_prgress = music.progress;
+                        $scope.music_progress = music.progress;
                         $scope.music_uploading = true;
                     });
                 }
