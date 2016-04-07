@@ -24,6 +24,12 @@ angular.module('myApp')
                 pics:[]
             };
 
+            $scope.$watch(function(){
+                return $scope.product.is_brand;
+            }, function(){
+                $scope.product.is_brand = Number($scope.product.is_brand);
+                console.log($scope.product.is_brand, typeof $scope.product.is_brand);
+            },true);
 
             $scope.sortableOptions = {
                 containment: '#sortable-container',
@@ -98,7 +104,7 @@ angular.module('myApp')
                 $scope.product.title = "";
                 $scope.product.banner_pic = "img/default-cover.png";
                 $scope.product.description = "";
-                $scope.product.is_brand = 0;
+                $scope.product.is_brand = 1;
                 $scope.product.is_home = 0;
                 $scope.product.music = "";
                 $scope.product.change_status = 0;
