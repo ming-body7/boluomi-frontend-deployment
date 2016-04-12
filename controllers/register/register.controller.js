@@ -50,7 +50,7 @@
                     $scope.default.passcodeText = "获取验证码";
                 }
             }
-            $timeout(countDown, 1000);
+            $timeout($scope.countDown, 1000);
 
         }
     }
