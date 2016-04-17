@@ -1,11 +1,8 @@
 @import "base";
-body{
-	overflow: auto;
-}
 .banner{
 	height:904px;
 	position:relative;
-	background:url(../img/banner.jpg) no-repeat center top;
+	background:url(../img/banner.png) no-repeat center top;
 	.inner{
 		max-width:1330px;
 		width:90%;
@@ -76,23 +73,20 @@ body{
 	background:url(../img/web_logo.png) no-repeat center;
 }
 .content{
-	.inner{
-		max-width:1200px;
-		height:580px;
-		margin:0 auto;
-		background:url(../img/bg_1.png) no-repeat left center;
-	}
+	max-width:1200px;
+	width:90%;
+	margin:0 auto;
+	
 	.advan_mode{
+		height:580px;
+		background:url(../img/bg_1.png) no-repeat left center;
 		dl{
 			float:right;
 			width:540px;
 		}
 	}
 	.mode_2{
-		background-color:#f7f7f7;
-		.inner{
-			background:url(../img/bg_2.jpg) no-repeat right center;
-		}
+		background:url(../img/bg_2.png) no-repeat right center;
 		h2{
 			text-align: left;
 		}
@@ -101,9 +95,7 @@ body{
 		}
 	}
 	.mode_3{
-		.inner{
-			background-image:url(../img/bg_3.png);
-		}
+		background:url(../img/bg_3.png) no-repeat left center;
 	}
 	h2{
 		font-size:40px;
@@ -137,10 +129,8 @@ body{
 }
 @media screen and (max-width:1030px){
 	.content{
-		.inner{
-			background-position:center top;
-		}
 		.advan_mode{
+			background-position:center top;
 			text-align: center;
 			dl{
 				float:none;
@@ -148,17 +138,17 @@ body{
 			}
 		}
 		.mode_2{
+			background-position:center top;
 			h2{
 				text-align: center;
 			}
 			dl{
 				float:none;
 			}
-			.inner{
-				background-position: center -128px;
-			}
 		}
-
+		.mode_3{
+			background-position:center top;
+		}
 		h2{
 			padding:404px 0 20px;
 			text-align: center;
@@ -174,14 +164,36 @@ body{
 		p{
 			font-size:16px;
 		}
-		.sign-in-btn,.view-case-btn,.free-register-btn{
-			display:none;
-		}
-		.gopc_btn{
-			display: inline-block;
-		}
 	}
-
+	.content{
+		.advan_mode{
+			height:520px;
+			background-size:450px;
+			dl{
+				float:none;
+				width:auto;
+			}
+		}
+		.mode_2{
+			background-position:center top;
+			h2{
+				text-align: center;
+			}
+			dl{
+				float:none;
+			}
+		}
+		.mode_3{
+			background-position:center top;
+		}
+		h2{
+			padding:330px 0 16px;
+			font-size:32px;
+		}
+		dd{
+			font-size:18px;
+		}
+	}	
 }
 
 
@@ -205,12 +217,32 @@ body{
 	}
 	.banner {
 		background-position:-548px top;
+		.sign-in-btn{
+			float:none;
+			display: block;
+			margin:30px auto 0;
+		}
 		p{
 			line-height: 22px; 
 		}
 	}
 }
 
+@media screen and (max-width:560px){
+	.content{
+		.advan_mode {
+			background-size:400px;
+		}
+		h2{
+			padding:296px 0 14px 0;
+			font-size:26px;
+		}
+		dd{
+			font-size:14px;
+			line-height: 22px;
+		}
+	}
+}
 
 @media screen and (max-width:480px){
 	.banner{
@@ -234,6 +266,7 @@ body{
 		}
 	}
 }
+
 .link-box{
 	position:absolute;
 	top:40%;
@@ -269,6 +302,7 @@ body{
 @media screen and (max-width:420px){
 	.banner{
 		height:800px;
+		
 	}
 	.content{
 		h2{
@@ -276,6 +310,9 @@ body{
 		}
 		dd{
 			font-size:12px;
+		}
+		.advan_mode {
+			height:430px;
 		}
 	}
 }
@@ -292,6 +329,7 @@ body{
 	border-radius:4px;
 	z-index:101;
 	box-sizing:content-box;
+	display:none;
 	.close-btn{
 		width:30px;
 		height:30px;
@@ -337,7 +375,6 @@ body{
 		background:#ff2b5a;
 		font-size:20px;
 		margin:36px 0 12px;
-		border-radius:4px;
 	}
 	.brand-regist-btn{
 		background:#fff;
@@ -386,14 +423,13 @@ body{
 .regist-bg{
 	background-image:url(../img/banner.jpg);
 }
-/*脰脝脳梅H5路脰脧铆碌脛web脪鲁脙忙*/
+/*制作H5分享的web页面*/
 .web_share{
 	background:url(../img/web_share_bg.jpg) no-repeat top center;
 	.cont{
 		width:898px;
 		margin:0 auto;
 		padding:120px 0 120px 304px;
-		box-sizing:content-box;
 		.clearfix();
 	}
 	.phone_mode{
@@ -434,54 +470,5 @@ body{
 			color:#ff2e5e;
 		}
 	}
-}
-.gopc_btn{
-	display: none;
-	width: 160px;
-	height: 50px;
-	border: 1px solid #fff;
-	border-radius: 4px;
-	text-align: center;
-	line-height: 50px;
-	font-size: 20px;
-	cursor: pointer;
-	margin: 0 10px;
-	color: #b09dc0;
-	background: #fff;
-}
-/*添加按钮状态*/
-.b_state_a{
-	&:hover{
-		background-color:#e51f4b;
-	};
-	&:active{
-		background-color:#d3143e;
-	};
-}
-.b_state_b{
-	&:hover{
-		background-color:#ff2b5a;
-		color:#fff;
-	};
-	&:active{
-		background-color:#e51f4b;
-		color:#fff;
-	};
-}
-.b_state_c{
-	&:hover{
-		background-color:rgba(255,255,255,.2);
-	};
-	&:active{
-		background-color:rgba(255,255,255,.5);
-	};
-}
-.b_state_d{
-	&:hover{
-		background-color:rgba(255,255,255,.8);
-	};
-	&:active{
-		background-color:rgba(255,255,255,.7);
-	};
 }
 
