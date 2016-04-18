@@ -248,7 +248,8 @@
                     area:merchant.area,
                     address:merchant.address,
                     licence:merchant.licence,
-                    location:merchant.location
+                    location:merchant.location,
+                    url:merchant.url
                 }
 
             }).success(function (response) {
@@ -265,7 +266,7 @@
         function EditMerchant(merchant, callback){
             $http({
                 method: 'POST',
-                url: baseUrl+'/v1/business/add',
+                url: baseUrl+'/v1/business/edit',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                     var str = [];
@@ -286,7 +287,8 @@
                     area:merchant.area,
                     address:merchant.address,
                     licence:merchant.licence,
-                    location:merchant.location
+                    location:merchant.location,
+                    url:merchant.url
                 }
 
             }).success(function (response) {
