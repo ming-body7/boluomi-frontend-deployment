@@ -266,7 +266,7 @@
         function EditMerchant(merchant, callback){
             $http({
                 method: 'POST',
-                url: baseUrl+'/v1/business/edit',
+                url: baseUrl+'/v1/business/add',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                     var str = [];
