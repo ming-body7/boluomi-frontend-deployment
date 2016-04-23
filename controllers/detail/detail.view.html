@@ -47,20 +47,21 @@
 	<div class="upload_zone">
 		<ul class="sortable-row" as-sortable="sortableOptions" ng-model="product.pics" >
 
-			<li ng-repeat="item in product.pics track by $index" as-sortable-item>
+			<li class=“hasload” ng-repeat="item in product.pics track by $index" as-sortable-item>
 				<div as-sortable-item-handle ngf-as-background="true">
 					<img ng-src="{{item}}" alt="loading..." width="150" height="236">
 					<p ng-click="product.pics.splice($index,1); $event.stopPropagation()"></p>
 				</div>
-				<div class="pro">
-					<progressbar ng-if="uploading[$index]" animate="true" value="progress[$index]" type="success"><b>{{progress[$index]}}%</b></progressbar>
+				<div class="pro" ng-if="uploading[$index]">
+					<progressbar animate="true" value="progress[$index]" type="success"></progressbar>
 				</div>
 			</li>
 			<li>
 				<div ngf-select="uploadFiles($files, $invalidFiles)" multiple
 					 accept="image/*,application/pdf"  ngf-pattern="'image/*,application/pdf'">
-					<a ng-if="product.pics.length == 0">请上传图片</a>
-					<a ng-if="product.pics.length != 0">添加图片</a>
+					<!--<a class="add_img" ng-if="product.pics.length == 0"></a>
+					<a class="add_img" ng-if="product.pics.length != 0"></a> -->
+					<a class="add_img"></a>
 				</div>
 			</li>
 		</ul>
