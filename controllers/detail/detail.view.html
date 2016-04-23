@@ -6,7 +6,7 @@
 	<div class="page_face">
 		<div class="img_box">
 			<img class="banner_pic"  ng-src="{{product.banner_pic}}" alt="封面图片"/>
-			<p type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="10000" ngf-max-size="100MB">
+			<p type="file" ngf-select="uploadBanner($file, $invalidFiles)" accept="image/*" ngf-max-height="10000" ngf-max-size="100MB">
 			<a id="banner_progress_button" progress-button value="banner_progress" in-progress="上传中。。。" complete="更改封面">更改封面</a>
 			</p>
 		</div>
@@ -80,7 +80,7 @@
 		height:100%;
 	}
 	.banner_pic {
-		min-width: 100%;
+		max-width: 100%;
 		min-height: 100%;
 		margin:auto;
 		display:block;

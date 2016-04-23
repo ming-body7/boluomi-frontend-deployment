@@ -160,7 +160,7 @@ angular.module('myApp')
                 }
             }
 
-            $scope.uploadFiles = function(file, errFiles) {
+            $scope.uploadBanner = function(file, errFiles) {
                 $scope.f = file;
 
                 $scope.errFile = errFiles && errFiles[0];
