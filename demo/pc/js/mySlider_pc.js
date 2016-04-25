@@ -65,7 +65,7 @@ $(function(){
 		};
 
 	//临时模拟数据d  正常情况是ajax返回的data
-	//def.resolve(d);
+	def.resolve(d);
 
 	//后台返回h5数据
 	def.done(function(d){
@@ -213,7 +213,7 @@ $(function(){
 						$('#audio_btn').show();
 					}
 				}
-				oImg.src =  ele;
+				oImg.src = './img/' + ele;
 			})
 		};
 
@@ -221,7 +221,7 @@ $(function(){
 		function load_more(){
 			for(var i=0;i<serImg_data.length;i++){
 				var oImg = new Image();
-				oImg.src = serImg_data[i].pic;
+				oImg.src = './img/'+serImg_data[i].pic;
 			}
 		}
 
