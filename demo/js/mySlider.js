@@ -100,7 +100,9 @@ $(function(){
 				'content' : '<div class="section sec '+ clas +'" style="background-image:url('+ serImg_data[i].pic +');'+ bg_size +'"><div>'
 			})
 		};
-		
+		//标题
+		var title = d.title;
+		document.title = title;
 		//商家logo填充
 		var logoImg = d.logoImg;
 		var logoHtml = '<a class="logoWrap" href="javascript:;"><img class="logo" src="'+ logoImg +'" alt=""></a>';
