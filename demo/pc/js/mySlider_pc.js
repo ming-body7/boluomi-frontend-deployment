@@ -40,16 +40,16 @@ $(function(){
 				serImg : [{
 					width : 640,
 					height : 960,
-					pic : '1.jpg'
+					pic : 'img/1.jpg'
 				}
 				,{
 					width : 640,
 					height : 960,
-					pic : '3.jpg'
+					pic : 'img/3.jpg'
 				},{
 					width : 640,
 					height : 960,
-					pic : '2.jpg'
+					pic : 'img/2.jpg'
 				}
 				],
 				logoImg : 'brand_log.png',
@@ -57,7 +57,7 @@ $(function(){
 				brandAddress: '望京soho',
 				brand_type : '商家类型',
 				animateType : '2',
-				musical : 'img/marry you1.mp3',
+				musical : 'img/marry you.mp3',
 				location :'116.470981,40.003265',
 				tel : 18575562180,
 				detail_url : './seeDetails.html' //无值返回 null
@@ -65,7 +65,7 @@ $(function(){
 		};
 
 	//临时模拟数据d  正常情况是ajax返回的data
-	def.resolve(d);
+	//def.resolve(d);
 
 	//后台返回h5数据
 	def.done(function(d){
