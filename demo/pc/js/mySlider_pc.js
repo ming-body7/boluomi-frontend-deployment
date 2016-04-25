@@ -334,7 +334,7 @@ $(function(){
 	// 动态生成二维码
 	function creatCode(){
 
-		var phone_url = "http://"+window.location.href.split('/pc/web_share.html').join('');
+		var phone_url = window.location.href.split('/pc/web_share.html').join('');
 		console.log(phone_url)
 		$("#code").qrcode({ 
 		    width: 256, //宽度 
