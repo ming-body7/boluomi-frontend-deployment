@@ -221,7 +221,7 @@ $(function(){
 		function load_more(){
 			for(var i=0;i<serImg_data.length;i++){
 				var oImg = new Image();
-				oImg.src = './img/'+serImg_data[i].pic;
+				oImg.src = serImg_data[i].pic;
 			}
 		}
 
