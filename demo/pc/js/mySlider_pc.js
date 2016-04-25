@@ -97,7 +97,7 @@ $(function(){
 
 			// console.log(serImg_data)
 			data.push({
-				'content' : '<div class="section sec '+ clas +'" style="background-image:url(./img/'+ serImg_data[i].pic +');'+ bg_size +'"><div>'
+				'content' : '<div class="section sec '+ clas +'" style="background-image:url('+ serImg_data[i].pic +');'+ bg_size +'"><div>'
 			})
 		};
 		
