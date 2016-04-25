@@ -213,7 +213,7 @@ $(function(){
 						$('#audio_btn').show();
 					}
 				}
-				oImg.src = './img/' + ele;
+				oImg.src =  ele;
 			})
 		};
 
