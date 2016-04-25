@@ -103,7 +103,7 @@ $(function(){
 		
 		//商家logo填充
 		var logoImg = d.logoImg;
-		var logoHtml = '<a class="logoWrap" href="javascript:;"><img class="logo" src="./img/'+ logoImg +'" alt=""></a>';
+		var logoHtml = '<a class="logoWrap" href="javascript:;"><img class="logo" src="'+ logoImg +'" alt=""></a>';
 
 		//商家名称
 		var brandName = d.brandName;
@@ -213,7 +213,7 @@ $(function(){
 						$('#audio_btn').show();
 					}
 				}
-				oImg.src = './img/' + ele;
+				oImg.src =  ele;
 			})
 		};
 
@@ -221,7 +221,7 @@ $(function(){
 		function load_more(){
 			for(var i=0;i<serImg_data.length;i++){
 				var oImg = new Image();
-				oImg.src = './img/'+serImg_data[i].pic;
+				oImg.src = serImg_data[i].pic;
 			}
 		}
 
