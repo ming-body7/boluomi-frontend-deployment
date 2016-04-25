@@ -65,7 +65,7 @@ $(function(){
 		};
 
 	//临时模拟数据d  正常情况是ajax返回的data
-	def.resolve(d);
+	//def.resolve(d);
 
 	//后台返回h5数据
 	def.done(function(d){
