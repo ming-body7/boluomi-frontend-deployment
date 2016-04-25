@@ -194,7 +194,7 @@ $(function(){
 
 
 		//图片预加载
-		var imgList = [serImg_data[0].pic,'albumBg.png','light.png','btn_arrow.png','music-icon.png','loading.gif','cotyRight.png','indexIcon.png','musicIcon.png','Sublogo.png','playingBg.png','workingIcon.png','cover.png'];
+		var imgList = [serImg_data[0].pic,'img/albumBg.png','img/light.png','img/btn_arrow.png','img/music-icon.png','img/loading.gif','img/copyRight.png','img/indexIcon.png','img/musicIcon.png','img/playingBg.png','img/workingIcon.png','img/cover.png'];
 
 		loadImg(imgList);
 		function loadImg(list){
@@ -213,7 +213,7 @@ $(function(){
 						$('#audio_btn').show();
 					}
 				}
-				oImg.src = './img/' + ele;
+				oImg.src =  ele;
 			})
 		};
 
@@ -221,7 +221,7 @@ $(function(){
 		function load_more(){
 			for(var i=0;i<serImg_data.length;i++){
 				var oImg = new Image();
-				oImg.src = './img/'+serImg_data[i].pic;
+				oImg.src = serImg_data[i].pic;
 			}
 		}
 	});
