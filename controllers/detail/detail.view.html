@@ -51,7 +51,7 @@
 
 			<li ng-repeat="item in product.pics track by $index" as-sortable-item>
 				<div as-sortable-item-handle ngf-as-background="true">
-					<img ng-src="{{item}}" alt="loading..." width="150" height="236">
+					<img class="uploaded_pic" ng-src="{{item}}" alt="loading..." width="150" height="236">
 					<div ng-if="uploading[$index]" class="mask"></div>
 					<p ng-click="product.pics.splice($index,1); $event.stopPropagation()"></p>
 				</div>
@@ -87,6 +87,9 @@
 		display:block;
 		position: absolute;
 		top: 0; left: 0; bottom: 0; right: 0;
+	}
+	.uploaded_pic {
+		object-fit: cover;
 	}
 	#coverContainer {
 		display:inline-block;
