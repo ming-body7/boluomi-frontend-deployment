@@ -144,8 +144,8 @@
                     $timeout($scope.countDown,1000);
                     $scope.default.passcodeText = $scope.counter;
                 }else{
-                    alert("请重新获取验证码！");
-                    $scope.default.passcodeText = "获取验证码";
+                    //alert("请重新获取验证码！");
+                    $scope.default.passcodeText = "重新获取验证码";
                 }
             }
             $timeout($scope.countDown, 1000);

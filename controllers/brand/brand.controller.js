@@ -150,7 +150,7 @@
 
                 function addBrandInfo(){
                     $scope.submitted = true;
-                    if(!($scope.brandForm.$error === {})){
+                    if(!(Object.keys($scope.brandForm.$error).length == 0)){
                         return;
                     }
                     if($scope.localMerchant.logo == ""){

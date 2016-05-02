@@ -26,7 +26,7 @@
 		<li>
 			<span>背景音乐：{{musicName}}</span>
 			<p class="base_btn" type="file"
-					ngf-validate-fn="validate($file)" ngf-select="uploadMusic($file)" ngf-max-size="14MB">
+					ngf-validate-fn="validate($file)" ngf-select="uploadMusic($file)" ngf-max-size="5MB">
 
 				<a progress-button value="music_progress" in-progress="上传中。。。" complete="重新上传">上传</a>
 			</p>
@@ -61,7 +61,7 @@
 			</li>
 			<li>
 				<div ngf-select="uploadFiles($files, $invalidFiles)" multiple
-					 accept="image/*,application/pdf"  ngf-pattern="'image/*,application/pdf'">
+					 accept="image/*,application/pdf"  ngf-pattern="'image/*,application/pdf'" ngf-max-size="4MB">
 					<!--<a class="add_img" ng-if="product.pics.length == 0"></a>
 					<a class="add_img" ng-if="product.pics.length != 0"></a> -->
 					<a class="add_img"></a>

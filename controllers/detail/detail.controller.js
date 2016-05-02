@@ -358,10 +358,15 @@ angular.module('myApp')
             $scope.uploading = [];
 
 
+
             $scope.uploadFiles = function(files, errFiles) {
                 $scope.files = files;
                 $scope.errFiles = errFiles;
 
+                if($scope.errFiles.length > 0){
+                    alert("图片过大");
+                }
+                
                 var pics_length = $scope.product.pics.length;
 
                 angular.forEach(files, function(file, index) {
