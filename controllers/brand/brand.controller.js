@@ -159,7 +159,7 @@
                     if($scope.localMerchant.licence == ""){
                         return;
                     }
-                    if($scope.localMerchant.marked){
+                    if(!$scope.localMerchant.marked){
                         return;
                     }
                     $scope.merchant = {
