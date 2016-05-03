@@ -25,15 +25,18 @@
 
             UserService.Create($scope.user, function(response){
                 if (response.success) {
-                    AuthenticationService.SetCredentials($scope.user.account, response.data.auth_key, response.data.id);
-                    $location.path('/brand');
+                    AuthenticationService.SetCredentials($scope.user.account, response.data.auth_key, response.data.id, 'user.brand',30);
+                    $state.go('brand');
                 } else {
-                    alert(response.data);
+                    for (var errorName in data) {
+                        alert(data[errorName]);
+                        break;
+                    }
+                    console.log(response.data);
                 }
             });
         }
         function getPasscode(){
-            //TODO:调用获取passcode的接口,倒计时
             if(!(Object.keys($scope.registerForm.account.$error).length == 0)){
                 return;
             }
@@ -42,7 +45,7 @@
                     countDownClock();
                     alert("已为您发送语音验证码，请注意接听电话，谢谢!");
                 }else{
-                    
+                    alert("验证码发送失败,请您稍后重试");
                 }
             });
 
