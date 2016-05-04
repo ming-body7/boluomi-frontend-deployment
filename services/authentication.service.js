@@ -5,8 +5,8 @@
         .module('myApp')
         .factory('AuthenticationService', AuthenticationService);
  
-    AuthenticationService.$inject = ['$http', '$cookies', '$rootScope', '$timeout', 'UserService'];
-    function AuthenticationService($http, $cookies, $rootScope, $timeout, UserService) {
+    AuthenticationService.$inject = ['$http', '$cookies', '$rootScope'];
+    function AuthenticationService($http, $cookies, $rootScope) {
 
         var App = $rootScope.App;
         var baseUrl = App.baseUrl;
