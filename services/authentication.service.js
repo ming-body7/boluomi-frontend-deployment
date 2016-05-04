@@ -8,7 +8,7 @@
     AuthenticationService.$inject = ['$http', '$cookies', '$rootScope'];
     function AuthenticationService($http, $cookies, $rootScope) {
 
-        var App = $rootScope.App;
+        var App = window.App;
         var baseUrl = App.baseUrl;
 
         var service = {};
