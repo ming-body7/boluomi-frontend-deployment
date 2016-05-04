@@ -6,8 +6,8 @@
     angular
         .module('myApp')
         .controller('brandController', ['$scope', '$rootScope', 'Upload', '$timeout','DataService','$state','' +
-        'GeoCoderService','UtilsService',
-            function($scope, $rootScope, Upload, $timeout, DataService, $state, GeoCoderService, UtilsService){
+        'GeoCoderService','UtilsService', 'AuthenticationService',
+            function($scope, $rootScope, Upload, $timeout, DataService, $state, GeoCoderService, UtilsService, AuthenticationService){
 
                 var App = $rootScope.App;
                 var uploadAPI = App.uploadAPI;
