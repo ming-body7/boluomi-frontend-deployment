@@ -29,7 +29,7 @@
                     $state.go('brand');
                 } else {
                     for (var errorName in response.data) {
-                        alert(data[errorName]);
+                        alert(response.data[errorName][0]);
                         break;
                     }
                     console.log(response.data);
