@@ -7,7 +7,7 @@
         .module('myApp')
         .controller('brandController', ['$scope', '$rootScope', 'Upload', '$timeout','DataService','$state','' +
         'GeoCoderService','UtilsService', 'AuthenticationService',
-            function($scope, $rootScope, Upload, $timeout, DataService, $state, GeoCoderService, UtilsService, AuthenticationService){
+            function($scope, $rootScope, Upload, $timeout, DataService, $state, GeoCoderService, UtilsService, uthenticationService){
 
                 var App = $rootScope.App;
                 var uploadAPI = App.uploadAPI;
@@ -177,7 +177,7 @@
                     };
                     DataService.AddMerchant($scope.merchant, function(response){
                         if(response.success){
-                            AuthenticationService.SetCredentials($rootScope.globals.account, $rootScope.globals.authKey, $rootScope.globals.id, 'user.audit',30);
+                            AuthenticationService.SetCredentials($rootScope.globals.account, $rootScope.globals.authKey, $rootScope.globals.id, 'user.audit',10);
                             $state.go('audit');
                         }else{
                             //品牌信息修改失败callback
