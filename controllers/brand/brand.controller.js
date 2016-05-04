@@ -177,7 +177,7 @@
                     };
                     DataService.AddMerchant($scope.merchant, function(response){
                         if(response.success){
-                            AuthenticationService.SetCredentials($rootScope.globals.account, $rootScope.globals.authKey, $rootScope.globals.id, 'user.brand',30);
+                            AuthenticationService.SetCredentials($rootScope.globals.account, $rootScope.globals.authKey, $rootScope.globals.id, 'user.audit',30);
                             $state.go('audit');
                         }else{
                             //品牌信息修改失败callback
@@ -191,6 +191,7 @@
                 function openMapModal(){
                     $scope.markOnMap = true;
                     if($scope.brandForm.address.$error.required!=null){
+
                         return;
                     }
                     GeoCoderService.getLocationByAddress($scope.localMerchant.city,$scope.localMerchant.address,

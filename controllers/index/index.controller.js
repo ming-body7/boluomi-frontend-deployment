@@ -23,6 +23,7 @@
         $scope.redirect = redirect;
         $scope.resetPassword = resetPassword;
         $scope.getPasscode = getPasscode;
+        $scope.navigateToRegister = navigateToRegister;
 
         (function initController() {
             AuthenticationService.GetCredentials();
@@ -161,6 +162,11 @@
             $scope.loginForgetZoneVisible = false;
             $scope.loginSubmitted = false;
             $scope.forgetSubmitted =false;
+        }
+
+        function navigateToRegister(){
+            AuthenticationService.ClearCredentials();
+            $state.go("register");
         }
 
         function countDownClock(){
