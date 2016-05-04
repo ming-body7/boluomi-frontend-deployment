@@ -42,7 +42,7 @@
                 if(response.type == 2){
                     callback({success: true, data: response.result});
                 }else{
-                    callback({success: false, data:response.result});
+                    callback({success: false, data:response.msg});
                 }
 
             });

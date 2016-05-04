@@ -28,7 +28,7 @@
                     AuthenticationService.SetCredentials($scope.user.account, response.data.auth_key, response.data.id, 'user.brand',30);
                     $state.go('brand');
                 } else {
-                    for (var errorName in data) {
+                    for (var errorName in response.data) {
                         alert(data[errorName]);
                         break;
                     }
