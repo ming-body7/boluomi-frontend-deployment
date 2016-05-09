@@ -27,7 +27,7 @@
                     if (response.success) {
                         AuthenticationService.ClearCredentials();
                         $location.path('/index');
-                        UserService.setAccessLevel('anonymous');
+
                     } else {
 
 
