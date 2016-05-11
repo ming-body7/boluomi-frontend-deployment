@@ -102,7 +102,20 @@ $(function(){
 		};
 		//标题
 		var title = d.title;
+		//document.title = title;
+
+		//hack on title
+		//http://www.zhihu.com/question/27849091#
+		var $body = $('body')
 		document.title = title;
+		// hack在微信等webview中无法修改document.title的情况
+		var $iframe = $('<iframe src="/favicon.ico"></iframe>').on('load', function() {
+			setTimeout(function() {
+				$iframe.off('load').remove()
+			}, 0)
+		}).appendTo($body)
+
+
 		//商家logo填充
 		var logoImg = d.logoImg;
 		var logoHtml = '<a class="logoWrap" href="javascript:;"><img class="logo" src="'+ logoImg +'" alt=""></a>';
