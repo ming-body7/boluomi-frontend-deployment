@@ -360,6 +360,7 @@ $(function(){
 
 	wx.ready(function() {
 		// alert('微信已经ready')
+		var data = d;
 		//分享给朋友
 		wx.onMenuShareAppMessage({
 			title: '菠萝蜜分享', // 分享标题
