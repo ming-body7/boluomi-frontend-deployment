@@ -1075,6 +1075,9 @@ a:focus {
   border-radius: 4px;
   color: #333;
 }
+.ang_content_detail .page_face input:focus {
+  border-color: #fe325f;
+}
 .ang_content_detail .page_face textarea {
   width: 540px;
   height: 124px;

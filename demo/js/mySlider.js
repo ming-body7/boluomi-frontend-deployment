@@ -174,7 +174,7 @@ $(function(){
 
 
 		var brandHand = '<div class="section brandSec new_b"><div class="edit_area"><p class="fix_box">'+ logoHtml +brandNameHtml + brandAddressHtml + brandHtml + brand_detail +'<a class="detailBtn" href="tel:'+ tel +'">联系商家</a></p><ul>';
-		var brandFoot = '</ul><a class="copyRight" href="javascript:;"></a></div><div>';
+		var brandFoot = '</ul><a class="copyRight" href="http://mp.weixin.qq.com/s?__biz=MzAwMTczOTcwNw==&mid=500511278&idx=1&sn=d60101879140760caf2de536bfad6710&scene=0&previewkey=u2Aqp0ghBv8tcuF%2FSVMhy8wqSljwj2bfCUaCyDofEow%3D#wechat_redirect"></a></div><div>';
 		var brandHtml = brandHand + brandFoot;
 		data.push({
 			'content' : brandHtml
@@ -364,7 +364,7 @@ $(function(){
 		wx.onMenuShareAppMessage({
 			title: '菠萝蜜分享', // 分享标题
 			desc: '秋风庭院藓侵阶。一任珠帘闲不卷，终日谁来！金锁已沉埋，壮气蒿莱。晚凉天净月华开。想得玉楼瑶殿影，空照秦淮。', // 分享描述
-			link: 'http://m2.xiaoliangkou.com/test/demo/main.html', // 分享链接
+			link: 'www.boluomi1314.com', // 分享链接
 			imgUrl: '/test/demo/img/cover.png', // 分享图标
 			type: 'link', // 分享类型,music、video或link，不填默认为link
 			dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -380,7 +380,7 @@ $(function(){
 		//分享到朋友圈
 		wx.onMenuShareTimeline({
 			title: '菠萝蜜分享到朋友圈 黄河远上白云间，一片孤城万仞山。羌笛何须怨杨柳，春风不度玉门关。', // 分享标题
-			link: 'http://m2.xiaoliangkou.com/test/demo/main.html', // 分享链接
+			link: 'www.boluomi1314.com', // 分享链接
 			imgUrl: '/test/demo/img/cover.png', // 分享图标
 			success: function() {
 				// 用户确认分享后执行的回调函数
