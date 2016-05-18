@@ -71,6 +71,8 @@ $(function(){
 	//后台返回h5数据
 	def.done(function(d){
 		d = d.result;
+
+        init_config();
 		//data数据填充
 		var data = [];
 
@@ -327,7 +329,7 @@ $(function(){
 	})	
 
 	//微信jsdk初始化
-	init_config();
+	//init_config();
 
 	function init_config(){
 		$.ajax({
