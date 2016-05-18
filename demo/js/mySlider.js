@@ -122,9 +122,9 @@ $(function(){
 
 		//微信分享接口hack
 		//把logo插入到body下面第一个
-		var share_pic = '<img style="width:0px;height:0px;" src="'+ logoImg +'" alt="">';
-		var bd = $('body');
-		bd.prepend(share_pic);
+		//var share_pic = '<img style="width:0px;height:0px;" src="'+ logoImg +'" alt="">';
+		//var bd = $('body');
+		//bd.prepend(share_pic);
 		//
 
 
