@@ -365,7 +365,7 @@ $(function(){
 		var data = wechatData;
 		//分享给朋友
 		wx.onMenuShareAppMessage({
-			title: '菠萝蜜分享', // 分享标题
+			title: data.title, // 分享标题
 			desc: '秋风庭院藓侵阶。一任珠帘闲不卷，终日谁来！金锁已沉埋，壮气蒿莱。晚凉天净月华开。想得玉楼瑶殿影，空照秦淮。', // 分享描述
 			link: 'www.boluomi1314.com', // 分享链接
 			imgUrl: '/test/demo/img/cover.png', // 分享图标
@@ -382,7 +382,7 @@ $(function(){
 
 		//分享到朋友圈
 		wx.onMenuShareTimeline({
-			title: '菠萝蜜分享到朋友圈 黄河远上白云间，一片孤城万仞山。羌笛何须怨杨柳，春风不度玉门关。', // 分享标题
+			title: data.title, // 分享标题
 			link: 'www.boluomi1314.com', // 分享链接
 			imgUrl: '/test/demo/img/cover.png', // 分享图标
 			success: function() {
