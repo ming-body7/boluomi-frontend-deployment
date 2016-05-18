@@ -2,7 +2,7 @@ $(function(){
 	var viewScale = $(window).width()/$(window).height();
 	var def = $.Deferred();
 
-
+    var wechatData = {};
 	var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 			sURLVariables = sPageURL.split('&'),
@@ -71,7 +71,7 @@ $(function(){
 	//后台返回h5数据
 	def.done(function(d){
 		d = d.result;
-
+        wechatData = d.result;
         init_config();
 		//data数据填充
 		var data = [];
@@ -362,7 +362,7 @@ $(function(){
 
 	wx.ready(function() {
 		// alert('微信已经ready')
-		var data = d;
+		var data = wechatData;
 		//分享给朋友
 		wx.onMenuShareAppMessage({
 			title: '菠萝蜜分享', // 分享标题
