@@ -71,7 +71,7 @@ $(function(){
 	//后台返回h5数据
 	def.done(function(d){
 		d = d.result;
-        wechatData = d.result;
+        wechatData = d;
         init_config();
 		//data数据填充
 		var data = [];
