@@ -154,7 +154,7 @@ $(function(){
 		var brandFoot = '</ul><a class="copyRight" href="javascript:;"></div><div>';
 		var brandHtml = brandHand + brandFoot;
 
-		if(d.is_brand){
+		if(d.is_brand == '1'){
 			data.push({
 				'content' : brandHtml
 			});
