@@ -39,7 +39,8 @@
 					DataService.GetProductList(page, pageSize, function(response){
 						if (response.success) {
 							$scope.list = [];
-							for(i = 0; i<response.data.list.length; i++){
+
+							for(var i = 0; i<response.data.list.length; i++){
 								var p = response.data.list[i];
 								if(p.status >= 0){
 									$scope.list.push(p);
