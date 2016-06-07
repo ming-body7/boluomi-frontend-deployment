@@ -141,8 +141,8 @@ $(function(){
 		// 配置音乐
 		var musical =  d.musical;
 		if(musical != ''){
-			$('#audio').show();
-			$('#audio').attr('src', musical);
+			$('#audio_btn').show();
+			$('#audio_btn').attr('src', musical);
 		}
 
 
