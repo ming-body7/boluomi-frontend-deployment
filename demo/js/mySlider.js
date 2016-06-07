@@ -171,7 +171,7 @@ $(function(){
 		var musical =  d.musical;
 		if(musical != ''){
 			$('#audio_btn').show();
-			$('#audio_btn').attr('src', musical);
+			$('#audio').attr('src', musical);
 		}
 
 		//商家电话
