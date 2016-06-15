@@ -810,7 +810,7 @@ a {
 }
 .imgDs-1th {
   -webkit-animation-name: img1th;
-  background-image: url(img/L.png);
+  background-image: url(../img/L.png);
 }
 @-webkit-keyframes img1th {
   0% {
@@ -847,7 +847,7 @@ a {
 }
 .imgDs-2th {
   -webkit-animation-name: img2th;
-  background-image: url(img/O.png);
+  background-image: url(../img/O.png);
 }
 @-webkit-keyframes img2th {
   0% {
