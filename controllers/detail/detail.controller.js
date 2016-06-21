@@ -63,7 +63,7 @@
                 $scope.saveChanges = saveChanges;
                 $scope.saveChangesAndExit = saveChangesAndExit;
                 $scope.preview = preview;
-
+                $scope.deleteMusic = deleteMusic;
                 $scope.musicName = "";
                 initProduct();
 
@@ -105,6 +105,12 @@
                         $scope.product.pics.splice(index, 1);
                     }
                 }
+
+                function deleteMusic(){
+                    $scope.product.music = "";
+                    $scope.musicName = "";
+                }
+
                 function initProduct(){
                     $scope.product.title = "";
                     $scope.product.banner_pic = "img/cover.png";
