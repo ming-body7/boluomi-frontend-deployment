@@ -65,6 +65,8 @@
                 $scope.preview = preview;
                 $scope.deleteMusic = deleteMusic;
                 $scope.musicName = "";
+                $scope.musicButton = "上传";
+
                 initProduct();
 
                 if(pid != null){
