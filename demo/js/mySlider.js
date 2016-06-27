@@ -383,8 +383,8 @@ $(function(){
 		var data = wechatData;
 		//分享给朋友
 		wx.onMenuShareAppMessage({
-			title: data.title, // 分享标题
-			desc:data.description, // 分享描述
+			title: wechatData.title, // 分享标题
+			desc:wechatData.description, // 分享描述
 			link: window.location.href, // 分享链接
 			imgUrl: data.banner_pic_n, // 分享图标
 			type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -400,9 +400,9 @@ $(function(){
 
 		//分享到朋友圈
 		wx.onMenuShareTimeline({
-			title: data.title + data.description, // 分享标题
+			title: wechatData.title + wechatData.description, // 分享标题
 			link: window.location.href, // 分享链接
-			imgUrl: data.banner_pic_n, // 分享图标
+			imgUrl: wechatData.banner_pic_n, // 分享图标
 			success: function() {
 				// 用户确认分享后执行的回调函数
 			},
