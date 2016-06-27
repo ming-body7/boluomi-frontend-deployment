@@ -363,7 +363,7 @@ $(function(){
 
 		function wx_config(data){
 			wx.config({
-			  debug: false,
+			  debug: true,
 			  appId: data.appId,
 			  timestamp: data.timestamp,
 			  nonceStr: data.nonceStr,
@@ -410,6 +410,12 @@ $(function(){
 				// 用户取消分享后执行的回调函数
 			}
 		});
+	});
+
+	wx.error(function(res){
+
+		// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
 	});
 
 });
