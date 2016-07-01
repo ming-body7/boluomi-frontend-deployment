@@ -153,10 +153,15 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <div class="licence_img">
-                    <img ng-if="localMerchant.licence!=null && localMerchant.licence!= ''" ng-src="{{localMerchant.licence}}" alt="">
+            <li ng-if="localMerchant.licence!=null && localMerchant.licence!= ''">
+                <div class="infoL">
                 </div>
+                <div lass="infoR">
+                    <div class="licence_img">
+                        <img ng-src="{{localMerchant.licence}}" alt="">
+                    </div>
+                </div>
+
             </li>
         </ul>
         <a id="submit_audit" class="submit-btn b_state_a" type="submit" ng-click="addBrandInfo()">提交审核</a>
@@ -193,7 +198,7 @@
 
     .licence_img{
         width: 200px;
-        height: 200px;
+        height: 300px;
         margin-top: 10px;
     }
     .infoL{
