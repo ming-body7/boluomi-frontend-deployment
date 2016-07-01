@@ -152,11 +152,11 @@
                         <progressbar  animate="true" value="licence_process" type="success"><b>{{licence_process}}%</b></progressbar>
                     </div>
                 </div>
+            </li>
+            <li>
                 <div class="licence_img">
                     <img ng-if="localMerchant.licence!=null && localMerchant.licence!= ''" ng-src="{{localMerchant.licence}}" alt="">
                 </div>
-
-
             </li>
         </ul>
         <a id="submit_audit" class="submit-btn b_state_a" type="submit" ng-click="addBrandInfo()">提交审核</a>
