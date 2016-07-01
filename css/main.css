@@ -1412,6 +1412,7 @@ a:focus {
   background: url(../img/help.png) no-repeat;
   vertical-align: middle;
   cursor: pointer;
+  border: 0px;
 }
 .ang_register_brand_audit .main .error {
   position: absolute;
