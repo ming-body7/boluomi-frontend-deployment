@@ -329,7 +329,7 @@
                 }
 
                 function openPreviewTab(pid){
-                    $window.open('http://www.boluomi1314.com/demo/pc/web_share.html?pid='+pid);
+                    $window.open('http://www.boluomi1314.cn/demo/pc/web_share.html?pid='+pid);
                 }
 
 
